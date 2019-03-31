@@ -2,25 +2,6 @@ import Constant
 import random
 import math
 import copy
-def edist(A,B):
-    dist=math.sqrt((A[0] - B[0])**2 + (A[1] - B[1])**2)
-    return dist
-def calc_avg(dp_list,k):
-    sum1=0
-    sum2=0
-    for i in range(len(dp_list)):
-        sum1+=dp_list[i][0]
-        sum2+=dp_list[i][1]
-    x_avg=sum1/k
-    y_avg=sum2/k
-    return (int(x_avg),int(y_avg))
-def diff(prev,curr):
-    print("---------------------")
-    for i in range(0,len(prev)):
-        x=prev[i][0]-curr[i][0]
-        y=prev[i][1]-curr[i][1]
-        print((x,y))
-        
 centroid=[]
 PM=[39,
 81,
@@ -66,25 +47,5 @@ cluster_dict = {i: [] for i in range(k)}
 prev_centroid=[]
 #LOOP
 count_while=0
-while(prev_centroid!=centroid):
-    count_while+=1;
-#Euclidean Distance between the Centroid and DataPoints
-    for i in range(0,len(pop_pm)):
-        temp=[]
-        for j in range(0,k):
-            temp.append(edist(pop_pm[i],centroid[j]))
-        cen_number=temp.index(min(temp))
-        cluster_dict[cen_number].append(pop_pm[i])
-    ##print("CLUSTER DICTIONARY : ", cluster_dict)
-
-#Prev Centroid temp
-    prev_centroid=copy.deepcopy(centroid)
-#Calculate New Centroids from the lists
-    for i in range(0,k):
-        centroid[i] = calc_avg(cluster_dict[i],k)
-   # diff(prev_centroid,centroid)
-   # print("iteration number :",count_while)
-    print("Updated Centroids :",centroid)  
-
-
+cluster(prev_centroid,centroid,pop_pm,cluster_dict,k):
 #Check if new centroid = old centroid - stop: else - iterate agian. 

@@ -1,0 +1,4 @@
+MIN_PM = 5
+MAX_PM = 150
+MIN_POP = 1
+MAX_POP = 20
