@@ -17,7 +17,7 @@ def calc_avg(dp_list):
 
 
 def diff(prev,curr):
-    print("---------------------")
+    print("Prev in diff :",prev,"Curr in diff ",curr)
     for i in range(0,len(prev)):
         x=prev[i][0]-curr[i][0]
         y=prev[i][1]-curr[i][1]
@@ -36,13 +36,14 @@ def alloc_dp_to_cluster_no(pop_pm,centroid,cluster_dict,k):
 def calc_new_centroid(centroid,cluster_dict,k):
         for i in range(0,k):
             centroid[i] = calc_avg(cluster_dict[i])
-            return centroid
+        return centroid
 
 
 def cluster(prev_centroid,centroid,pop_pm,cluster_dict,k):
     count_while=0
     while(prev_centroid!=centroid):
-        
+        #print("Prev Cen :",prev_centroid)
+        #print("Curr Cen :",centroid)
         #Clean Original Centroid dict
         for i in range(k):
             cluster_dict[i]=[]
@@ -54,12 +55,15 @@ def cluster(prev_centroid,centroid,pop_pm,cluster_dict,k):
         prev_centroid=copy.deepcopy(centroid)
         
         #Calculate New Centroids from the lists
-        calc_new_centroid(centroid,cluster_dict,k)
+        centroid=calc_new_centroid(centroid,cluster_dict,k)
 
         count_while+=1
-        # diff(prev_centroid,centroid)
-        print("iteration number :",count_while)
-        print("Updated Centroids :",centroid)
-    return cluster_dict    
+        diff(prev_centroid,centroid)
+        #print("iteration number :",count_while)
+        #print("Updated Centroids :",centroid)
+        #print("Clusters Current :",cluster_dict)
+        #print("---------------------")
+    return cluster_dict,centroid
+
 
         
