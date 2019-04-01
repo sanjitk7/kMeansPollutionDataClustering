@@ -34,13 +34,9 @@ SC=[582,
 SC_PM=dict(zip(SC,PM))
 Pop=[7,8,6,5,2,1,4,10,5,5,10,4,3,6.5]
 
-def main(k):
+def main(k, pop_pm):
     #clean data for use
-    population_dict,pm10_dict = input_data_processing.prep_data();
-
-    pop_pm = list()
-    for state in population_dict:
-        pop_pm.append((int(population_dict[state].replace(",","")),int(pm10_dict[state])))
+    pom_pm = input_data_processing.prep_data();
 
     #print(pop_pm)
     #pop_pm = list(zip(Pop,PM)) # list of datapoints

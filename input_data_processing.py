@@ -4,7 +4,7 @@ import json
 def prep_data():
     with open ("city_population.json") as read_json:
         data  = json.load(read_json)
-    print(data)
+    #print(data)
 
     with open ('air_quality_PM10_2012.csv',encoding="utf-8", errors="ignore") as csvfile:
         readCSV = csv.reader(csvfile, delimiter=',')
@@ -16,12 +16,18 @@ def prep_data():
                     pm10_dict[row[1]] = row[9]
                     population_dict[row[1]] = data[row[1]]
 
-        print(population_dict)
-        print(pm10_dict)
-        print(len(population_dict))
-        print(len(pm10_dict))
+        #print(population_dict)
+        #print(pm10_dict)
+        #print(len(population_dict))
+        #print(len(pm10_dict))
 
-        return population_dict, pm10_dict
+        pop_pm = list()
+        for state in population_dict:
+            pop_pm.append((int(population_dict[state].replace(",","")),int(pm10_dict[state])))
+
+        #print(pop_pm)
+
+        return pop_pm
 
 
 
