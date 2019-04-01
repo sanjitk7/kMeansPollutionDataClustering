@@ -2,6 +2,8 @@
 
 https://data.gov.in/catalog/ambient-air-quality-respect-particulate-matter-under-national-air-quality-monitoring
 ---
+## Script to parse wikepedia file
+cat wikepedia_screen_scrape.txt  | grep '[0-9]'|grep -v '^(' | grep -v '[0-9]*to[0-9]*' | awk -F ' ' '{print "\"" $2 "\":\"" $3 "\","}' >> city_population.json
 
 ## Edit a file
 

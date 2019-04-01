@@ -1,11 +1,18 @@
 import math
 import copy
+import random
+import Constant
+
 def edist(A,B):
     dist=math.sqrt((A[0] - B[0])**2 + (A[1] - B[1])**2)
     return round(dist,2)
 
 
 def calc_avg(dp_list):
+    #if cluster has no tuples, create a random tuple and move forward
+    if(len(dp_list) == 0):
+        return (random.randint(Constant.MIN_POP,Constant.MAX_POP),random.randint(Constant.MIN_PM,Constant.MAX_PM))
+
     sum1=0
     sum2=0
     for i in range(len(dp_list)):
@@ -17,11 +24,11 @@ def calc_avg(dp_list):
 
 
 def diff(prev,curr):
-    print("Prev in diff :",prev,"Curr in diff ",curr)
+    #print("Prev in diff :",prev,"Curr in diff ",curr)
     for i in range(0,len(prev)):
         x=prev[i][0]-curr[i][0]
         y=prev[i][1]-curr[i][1]
-        print((x,y))
+        #print((x,y))
         
 def alloc_dp_to_cluster_no(pop_pm,centroid,cluster_dict,k):
     for i in range(0,len(pop_pm)):

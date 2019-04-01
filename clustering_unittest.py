@@ -6,7 +6,7 @@ class TestUM(unittest.TestCase):
  
     def setUp(self):
         pass
- 
+
     def test_edist(self):
         self.assertEqual(edist((1,2), (3,4)),2.83)
         
@@ -15,6 +15,7 @@ class TestUM(unittest.TestCase):
         self.assertEqual(calc_avg(list1),(3,2))
         list2=[(1,1),(7,4),(8,1)]
         self.assertEqual(calc_avg(list2),(5,2))
+
 
     def test_alloc_dp_to_cluster_no(self):
         pop_pm=[(1,2),(1,3),(3,4),(3,3),(6,1),(6,3),(7,2),(8,3),(2,2),(2,4)]
@@ -37,14 +38,17 @@ class TestUM(unittest.TestCase):
        pop_pm=[(1,2),(1,3),(3,4),(3,3),(6,1),(6,3),(7,2),(8,3),(2,2),(2,4)]
        cluster_dict={0:[(0,0),(0,1)],1:[(1,1),(2,2)]}
        dict1={0: [(1, 2), (1, 3), (3, 4), (3, 3), (2, 2), (2, 4)], 1: [(6, 1), (6, 3), (7, 2), (8, 3)]}
-       self.assertEqual(cluster(prev,centroid,pop_pm,cluster_dict,2),dict1)
+       self.assertDictEqual(cluster(prev,centroid,pop_pm,cluster_dict,2)[0],dict1)
+       self.assertListEqual(cluster(prev,centroid,pop_pm,cluster_dict,2)[1],centroid)
+
     def test_cluster_2_iteration(self):
         prev=[(2,2),(8,2)]
         centroid=[(0,1),(0,2)]
         pop_pm=[(1,2),(1,3),(3,4),(3,3),(6,1),(6,3),(7,2),(8,3),(2,2),(2,4)]
         cluster_dict={0:[(0,0),(0,1)],1:[(1,1),(2,2)]}
         dict1={1: [(1, 2), (1, 3), (3, 4), (3, 3), (2, 2), (2, 4)], 0: [(6, 1), (6, 3), (7, 2), (8, 3)]}
-        self.assertEqual(cluster(prev,centroid,pop_pm,cluster_dict,2),dict1)
+        self.assertDictEqual(cluster(prev,centroid,pop_pm,cluster_dict,2)[0],dict1)
+        self.assertListEqual(cluster(prev,centroid,pop_pm,cluster_dict,2)[1],centroid)
      
 if __name__ == '__main__':
     unittest.main()
