@@ -1,6 +1,8 @@
 import Constant
 import random
 import clustering_functions
+import input_data_processing
+
 PM=[39,
 81,
 63,
@@ -33,7 +35,16 @@ SC_PM=dict(zip(SC,PM))
 Pop=[7,8,6,5,2,1,4,10,5,5,10,4,3,6.5]
 
 def main(k):
-    pop_pm = list(zip(Pop,PM)) # list of datapoints
+    #clean data for use
+    population_dict,pm10_dict = input_data_processing.prep_data();
+
+    pop_pm = list()
+    for state in population_dict:
+        pop_pm.append((int(population_dict[state].replace(",","")),int(pm10_dict[state])))
+
+    #print(pop_pm)
+    #pop_pm = list(zip(Pop,PM)) # list of datapoints
+
     centroid=[]
     #Random Centroid Generation
     for i in range(0,k):
