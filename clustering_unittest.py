@@ -1,6 +1,7 @@
 import unittest
 import math
 from clustering_functions import edist,calc_avg,alloc_dp_to_cluster_no,calc_new_centroid,cluster
+from clustering_result import result
  
 class TestUM(unittest.TestCase):
  
@@ -49,6 +50,14 @@ class TestUM(unittest.TestCase):
         dict1={1: [(1, 2), (1, 3), (3, 4), (3, 3), (2, 2), (2, 4)], 0: [(6, 1), (6, 3), (7, 2), (8, 3)]}
         self.assertDictEqual(cluster(prev,centroid,pop_pm,cluster_dict,2)[0],dict1)
         self.assertListEqual(cluster(prev,centroid,pop_pm,cluster_dict,2)[1],centroid)
+
+    def test_result(self):
+        cluster_dict={0:[(15000000,0),(5000000,1)],1:[(6000000,1),(8000000,2)]}
+        population_dict={"chennai":15000000,"erode":5000000,"vellore":6000000,"coimbatore":8000000}
+        list_of_cities_0=["chennai","erode"]
+        list_of_cities_1=["vellore","coimbatore"]
+        clustered_city={0: ['chennai', 'erode'], 1: ['vellore', 'coimbatore']}
+        self.assertDictEqual(result(cluster_dict,population_dict),clustered_city)
      
 if __name__ == '__main__':
     unittest.main()

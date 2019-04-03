@@ -22,12 +22,12 @@ def prep_data():
         #print(len(pm10_dict))
 
         pop_pm = list()
-        for state in population_dict:
-            pop_pm.append((int(population_dict[state].replace(",","")),int(pm10_dict[state])))
+        for city in population_dict:
+            pop_pm.append((int(population_dict[city].replace(",","")),int(pm10_dict[city])))
 
         #print(pop_pm)
 
-        return pop_pm
+        return pop_pm,population_dict
 
 
 
