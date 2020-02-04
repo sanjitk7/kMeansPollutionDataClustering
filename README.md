@@ -38,12 +38,15 @@ Download python notebook or anaconda navigator package from [here](https://www.a
 ## Script to parse wikepedia file
 cat wikepedia_screen_scrape.txt  | grep '[0-9]'|grep -v '^(' | grep -v '[0-9]*to[0-9]*' | awk -F ' ' '{print "\"" $2 "\":\"" $3 "\","}' >> city_population.json
 
+## Architecture
+
+![](image/image5.png width="400" height="400")
+
+
 ## Output sample
 
 ![](images/kMeansOutput.png width="400" height="400)
 ![](images/1.png width="400" height="400)
-![](images/2.png width="400" height="400)
-![](images/3.png width="400" height="400)
 
 ## Project Report:
 
