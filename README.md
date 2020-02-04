@@ -47,4 +47,4 @@ cat wikepedia_screen_scrape.txt  | grep '[0-9]'|grep -v '^(' | grep -v '[0-9]*to
 
 ## Project Report:
 
-![](ProjectReport.pdf)
+Click [here](ProjectReport.pdf) to see report
