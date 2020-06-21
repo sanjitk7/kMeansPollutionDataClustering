@@ -40,13 +40,13 @@ cat wikepedia_screen_scrape.txt  | grep '[0-9]'|grep -v '^(' | grep -v '[0-9]*to
 
 ## Architecture
 
-![](images/kmeans_arch.png width="400" height="400")
+![](images/kmeans_arch.png)
 
 ## Output sample
 
-![](images/kMeansOutput.png width="400" height="400)
-![](images/1.png width="400" height="400)
+![](images/kMeansOutput.png)
+![](images/1.png)
 
 ## Project Report:
 
-Click [here](ProjectReport.pdf) to see report
+Click [here](ProjectReport.pdf) to view final report
